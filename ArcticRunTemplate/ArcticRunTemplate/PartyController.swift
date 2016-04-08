@@ -14,12 +14,14 @@ class PartyController: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var names : [String] = ["Aeneas Mackintosh", "Dick Richards", "Ernest Joyce", "John Stenhouse","Arnold Spencer-Smith"]
+    var lastNames : [String] = ["Mackintosh", "Richards", "Joyce", "Stenhouse","Spencer-Smith"]
     var health : [String] = ["Status: Active","Status: Active","Status: Active","Status: Active","Status: Active"]
     var images = [UIImage(named: "Aeneas-Mackintosh"),UIImage(named:"Dick-Richards"),UIImage(named:"Ernest-Joyce"),UIImage(named:"John-Stenhouse"),UIImage(named:"Spencer-Smith")]
     
     var selectedName : String = ""
     var selectedHealth : String = ""
     var selectedImage : UIImage = UIImage()
+    var selectedLastName : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +58,13 @@ class PartyController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 selectedName = names[indexPath.row]
                 selectedHealth = health[indexPath.row]
                 selectedImage = images[indexPath.row]!
+                selectedLastName = lastNames[indexPath.row]
                 
                 let viewController = segue.destinationViewController as! CharacterViewController
                 viewController.nameString = selectedName
                 viewController.healthString = selectedHealth
                 viewController.image = selectedImage
+                viewController.lastName = selectedLastName
             }
         }
     }

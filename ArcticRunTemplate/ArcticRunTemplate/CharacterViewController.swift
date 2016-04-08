@@ -19,6 +19,8 @@ class CharacterViewController: UIViewController{
     var nameString : String = ""
     var healthString : String = ""
     var image: UIImage = UIImage()
+    var lastName: String = ""
+    var memberHealth: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +35,27 @@ class CharacterViewController: UIViewController{
         name.text = nameString
         health.text = healthString
         imageView.image = image
-        
+        let test = getMemberHealth("Joyce")
+        print(test)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Gets a certain party members health
+    // Function returns before database query gets returns, as query is run in a seperate thread
+    func getMemberHealth(partyMemberLastName: String)->Int {
+        var partyMemberHealth = 0
+        Member.getAllMembers { (members: [Member]) -> Void in
+            for var i = 0; i < members.count; i++ {
+                if (members[i].getLastName() == partyMemberLastName) {
+                    partyMemberHealth = members[i].getHealth()!
+                }
+            }
+        }
+        return partyMemberHealth
     }
     
     @IBAction func TwitterShare(sender: AnyObject) {
