@@ -14,7 +14,7 @@ class PartyController: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var names : [String] = ["Aeneas Mackintosh", "Dick Richards", "Ernest Joyce", "John Stenhouse","Arnold Spencer-Smith"]
-    var health : [String] = ["Status: Healthy","Status: Sick","Status: Hungry","Status: Dead","Status: Sick"]
+    var health : [String] = ["Status: Active","Status: Active","Status: Active","Status: Active","Status: Active"]
     var images = [UIImage(named: "Aeneas-Mackintosh"),UIImage(named:"Dick-Richards"),UIImage(named:"Ernest-Joyce"),UIImage(named:"John-Stenhouse"),UIImage(named:"Spencer-Smith")]
     
     var selectedName : String = ""
